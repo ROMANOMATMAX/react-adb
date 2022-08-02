@@ -4,6 +4,7 @@ import { routes } from './routes';
 import logo from '../logo.svg';
 
 export const Navigation = () => {
+  console.log('routes', routes);
   return (
     <Suspense fallback={<span>Loading...</span>}>
       <BrowserRouter>
@@ -20,7 +21,7 @@ export const Navigation = () => {
           </nav>
           <Routes>
             {routes.map(({Component, path}) =>(
-              <Route path={path} element={<Component />} />
+              <Route key={path} path={path} element={<Component />} />
             ))}
             <Route path="/*" element={ <Navigate to={ routes[0].to } replace />}/>
           </Routes>
